@@ -1,0 +1,14 @@
+@startuml Aggregation
+
+class Zbook{
+    Mouse * m
+    void play()
+}
+
+class Mouse{
+    void click()
+}
+
+Zbook o-- Mouse : 聚合
+
+@enduml
