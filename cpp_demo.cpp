@@ -1,16 +1,17 @@
-class Mouse{
+class Computer{
 public:
-  void click(){
-    /* do some thing */
+  Mouse m;
+  virtual void play(){
+    m.click();
   }
 };
 
-class Zbook{
-  Mouse *m;
-  void play(){
-    if(m != nullptr){
-      m->click();
-    }
+class Zbook : public Computer{
+public:
+  KeyBoard k;
+  virtual void play(){
+      m.click();
+      k.hit();
   }
 };
 

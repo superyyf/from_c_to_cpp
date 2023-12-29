@@ -12,3 +12,34 @@ class Mouse{
 Zbook o-- Mouse : 聚合
 
 @enduml
+
+@startuml Composition 
+
+class Zbook{
+    Mouse m
+    void play()
+}
+
+class Mouse{
+    void click()
+}
+
+Zbook *-- Mouse : 组合
+
+@enduml
+
+@startuml  Derived
+
+class Computer{
+    Mouse m
+    virtual void play()
+}
+
+class Zbook{
+    KeyBoard k
+    virtual void play()
+}
+
+Computer <|-- Zbook : 继承
+
+@enduml
