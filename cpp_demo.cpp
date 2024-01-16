@@ -1,41 +1,47 @@
 #include <iostream>
-#include <string>
+#include <vector>
 
-class Computer{
-private:
-  int screen;
-
-protected:
-  char* type;
-  
+class Animal
+{
+public :
+    virtual void shout() = 0;
+};
+class Dog :public Animal
+{
 public:
-  virtual void power_up(){
-    screen = 1;
-    type = "computer";
-    std::cout << std::string(type) << " power up with screen " << screen << std::endl;
-  }
+    virtual void shout(){ std::cout << "wang wang"<< std::endl; }
+};
+class Cat :public Animal
+{
+public:
+    virtual void shout(){ std::cout << "miao miao"<< std::endl; }
+};
+class Bird : public Animal
+{
+public:
+    virtual void shout(){ std::cout << "ge ge"<< std::endl; }
 };
 
-class Zbook : public Computer{
-private:
-  int camera;
+int main()
+{
+    std::vector<Animal*>anims;
+ 
+    Animal * anim1 = new Dog;
+    Animal * anim2 = new Cat;
+    Animal * anim3 = new Bird;
+ 
+    //处理异质类集合
+    anims.push_back(anim1);
+    anims.push_back(anim2);
+    anims.push_back(anim3);
+ 
+    for (auto & i : anims)
+    {
+        i->shout();
+    }
+    delete anim1;
+    delete anim2;
+    delete anim3;
 
-public:
-  virtual void power_up(){
-    // screen = 1;
-    camera = 1;
-    type = "notebook";
-    std::cout << std::string(type) << " power up with camera " << camera << std::endl;
-  }
-};
-
-int main(){
-  Computer a;
-  // a.screen = 2;
-  // a.type = "iphone";
-  a.power_up();
-  Zbook z;
-  // z.camera = 2;
-  // z.type = "iphone";
-  z.power_up();
+    return 0;
 }
